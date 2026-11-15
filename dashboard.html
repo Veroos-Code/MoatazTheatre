@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Moataz Medhat</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="dashboard">
+
+        <aside class="dashboard-sidebar">
+
+            <div class="dashboard-logo">
+                MM
+                <span>MOATAZ MEDHAT</span>
+            </div>
+
+            <h3>ADMIN PANEL</h3>
+
+            <nav class="dashboard-nav">
+                <a href="#overview" class="active">Overview</a>
+                <a href="#profile">Profile</a>
+                <a href="#productions">Productions</a>
+                <a href="#vision">Vision</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#awards">Awards</a>
+                <a href="#contact">Contact</a>
+                <a href="#messages">Messages</a>
+            </nav>
+
+            <a href="index.html" class="dashboard-back">
+                View Website
+            </a>
+
+            <button id="logout-btn" class="logout-btn">
+                Logout
+            </button>
+
+        </aside>
+
+        <main class="dashboard-main">
+
+            <header class="dashboard-header">
+                <div>
+                    <span>WELCOME BACK</span>
+                    <h1>Dashboard</h1>
+                </div>
+
+                <div class="admin-label">
+                    ADMINISTRATOR
+                </div>
+            </header>
+
+            <section id="overview" class="dashboard-content">
+
+                <div class="dashboard-welcome">
+                    <span>MOATAZ MEDHAT PORTFOLIO</span>
+                    <h2>Manage Your Creative World</h2>
+                    <p>
+                        Manage your productions, awards,
+                        gallery and personal information.
+                    </p>
+                </div>
+
+                <div class="dashboard-cards">
+
+                    <div class="dashboard-card">
+                        <span>01</span>
+                        <h3>Profile</h3>
+                        <p>Manage personal information.</p>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <span>02</span>
+                        <h3>Productions</h3>
+                        <p>Manage theatre productions.</p>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <span>03</span>
+                        <h3>Gallery</h3>
+                        <p>Manage performance images.</p>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <span>04</span>
+                        <h3>Awards</h3>
+                        <p>Manage awards and achievements.</p>
+                    </div>
+
+                </div>
+
+            </section>
+            <!-- PROFILE MANAGEMENT -->
+<section class="dashboard-content" id="profile">
+
+    <div class="dashboard-header">
+        <div>
+            <h1>Profile Management</h1>
+            <p>Edit the director's personal information.</p>
+        </div>
+    </div>
+
+    <div class="dashboard-welcome">
+        <h2>Edit Profile</h2>
+
+        <form id="profile-form">
+
+            <div class="form-group">
+                <label for="profile-name">Full Name</label>
+                <input type="text" id="profile-name"
+                    placeholder="Enter full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="profile-role">Professional Title</label>
+                <input type="text" id="profile-role"
+                    placeholder="Enter professional title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="profile-description">About</label>
+                <textarea id="profile-description"
+                    placeholder="Write about the director..." required></textarea>
+            </div>
+
+<div class="form-group">
+    <label for="profile-image">Profile Image</label>
+    <input type="file" id="profile-image"
+        accept="image/png, image/jpeg, image/webp, image/gif">
+</div>
+
+            <button type="submit" class="add-award-btn">
+                Save Profile
+            </button>
+
+        </form>
+    </div>
+
+</section>
+<!-- VISION MANAGEMENT -->
+<section class="dashboard-content" id="vision">
+
+    <div class="dashboard-header">
+        <div>
+            <h1>Vision Management</h1>
+            <p>Edit the director's artistic vision.</p>
+        </div>
+    </div>
+
+    <div class="dashboard-welcome">
+        <h2>Edit Vision</h2>
+
+        <form id="vision-form">
+
+            <div class="form-group">
+                <label for="vision-title">Vision Title</label>
+                <input type="text" id="vision-title"
+                    placeholder="Enter vision title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="vision-description">Vision Description</label>
+                <textarea id="vision-description"
+                    placeholder="Write the director's vision..."
+                    required></textarea>
+            </div>
+
+            <button type="submit" class="add-award-btn">
+                Save Vision
+            </button>
+
+        </form>
+    </div>
+
+</section>
+<!-- Awards Management -->
+<section class="dashboard-content" id="awards">
+
+    <div class="dashboard-header">
+        <div>
+            <h1>Awards Management</h1>
+            <p>Add and manage Moataz Medhat's awards.</p>
+        </div>
+    </div>
+
+    <div class="dashboard-welcome">
+        <h2>Add New Award</h2>
+
+        <form id="award-form">
+
+            <div class="form-group">
+                <label for="award-title">Award Name</label>
+                <input type="text" id="award-title"
+                       placeholder="Enter award name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="award-year">Year</label>
+                <input type="number" id="award-year"
+                       placeholder="Enter year" required>
+            </div>
+
+            <div class="form-group">
+                <label for="award-description">Description</label>
+                <textarea id="award-description"
+                          placeholder="Enter award description"
+                          required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="award-image">Award Image</label>
+                <input type="file" id="award-image"
+                       accept="image/png, image/jpeg, image/webp, image/gif">
+            </div>
+
+            <button type="submit" class="add-award-btn">
+                Add Award
+            </button>
+
+        </form>
+    </div>
+
+    <div class="dashboard-welcome">
+        <h2>Existing Awards</h2>
+        <div id="awards-list">
+            <p>No awards added yet.</p>
+        </div>
+    </div>
+
+</section>
+
+<!--production Management -->
+<section class="dashboard-content" id="productions">
+
+    <div class="dashboard-header">
+        <div>
+            <h1>Productions Management</h1>
+            <p>Add and manage Moataz Medhat's theatre productions.</p>
+        </div>
+    </div>
+
+    <div class="dashboard-welcome">
+        <h2>Add New Production</h2>
+<form id="production-form">
+
+    <div class="form-group">
+        <label for="production-title">Production Name</label>
+        <input type="text" id="production-title"
+            placeholder="Enter production name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="production-year">Year</label>
+        <input type="number" id="production-year"
+            placeholder="Enter year" required>
+    </div>
+         <div class="form-group">
+    <label for="production-image">Production Image</label>
+    <input
+        type="file"
+        id="production-image"
+        accept="image/png, image/jpeg, image/webp, image/gif"
+        required
+    >
+</div>
+
+    <div class="form-group">
+        <label for="production-description">Description</label>
+        <textarea id="production-description"
+            placeholder="Enter production description"
+            required></textarea>
+    </div>
+    <button type="submit" class="add-award-btn">
+        Add Production
+    </button>
+
+</form>
+
+  
+</div>
+
+    <div class="dashboard-welcome">
+        <h2>Existing Productions</h2>
+        <div id="productions-list">
+            <p>No productions added yet.</p>
+        </div>
+    </div>
+
+</section>
+<!-- GALLERY MANAGEMENT -->
+
+<section class="dashboard-content" id="gallery" style="display: block;">
+
+    <div class="dashboard-header">
+        <div>
+            <h1>Gallery Management</h1>
+            <p>Add and manage theatre photos.</p>
+        </div>
+    </div>
+
+    <div class="dashboard-welcome">
+        <h2>Add New Photo</h2>
+
+        <form id="gallery-form">
+
+            <div class="form-group">
+                <label for="gallery-title">Photo Title</label>
+                <input type="text" id="gallery-title"
+                    placeholder="Enter photo title" required>
+            </div>
+
+         <div class="form-group">
+    <label for="gallery-image">Gallery Image</label>
+    <input type="file" id="gallery-image"
+        accept="image/png, image/jpeg, image/webp, image/gif"
+        required>
+</div>
+            <button type="submit" class="add-award-btn">
+                Add Photo
+            </button>
+
+        </form>
+    </div>
+
+    <div class="dashboard-welcome">
+        <h2>Existing Photos</h2>
+        <div id="gallery-list">
+            <p>No photos added yet.</p>
+        </div>
+    </div>
+
+</section>
+
+<!-- MESSAGES MANAGEMENT -->
+
+<section class="dashboard-content" id="messages">
+
+    <div class="dashboard-header">
+        <div>
+            <h1>Messages Management</h1>
+            <p>View and manage messages sent by website visitors.</p>
+        </div>
+    </div>
+
+    <div class="dashboard-welcome">
+
+        <h2>Visitor Messages</h2>
+
+        <div id="messages-list">
+            <p>Loading messages...</p>
+        </div>
+
+    </div>
+
+</section>
+
+        </main>
+
+    </div>
+
+    <script type="module" src="js/dashboard.js"></script>
+
+</body>
+</html>
