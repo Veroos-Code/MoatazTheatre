@@ -7,10 +7,15 @@
 
     <title>Awards | Moataz Medhat</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/site.css">
 </head>
 
-<body>
+<body class="inner-page">
 
     <header>
         <nav>
@@ -30,23 +35,31 @@
 
     <main>
 
-        <section id="awards" class="awards-section">
+        <!-- عنوان الصفحة -->
+        <section id="awards" class="pg-hero">
+            <div class="pg-hero__inner">
+                <p class="pg-kicker">RECOGNITION &amp; ACHIEVEMENTS</p>
+                <h1 class="pg-title">Awards &amp; Honors</h1>
+            </div>
+        </section>
 
-            <span class="section-subtitle">RECOGNITION & ACHIEVEMENTS</span>
-
-            <h1>Awards & Honors</h1>
-
+        <!-- الجوايز (الـ id زي ما هو عشان main.js) -->
+        <section class="aw-section">
             <div class="awards-container" id="public-awards-container">
 
                 <p>Loading awards...</p>
 
             </div>
-
         </section>
 
     </main>
 
+    <footer class="pg-footer">
+        <p>© 2026. All Rights Reserved.</p>
+    </footer>
+
     <script type="module" src="js/main.js"></script>
 
 </body>
+
 </html>

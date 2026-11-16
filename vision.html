@@ -7,10 +7,15 @@
 
     <title>Vision | Moataz Medhat</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/inner.css">
 </head>
 
-<body>
+<body class="inner-page">
 
     <header>
         <nav>
@@ -29,29 +34,36 @@
     </header>
 
     <main>
-<section id="vision" class="vision-section">
 
-        <span class="section-subtitle">ARTISTIC PHILOSOPHY</span>
+        <!-- عنوان الصفحة -->
+        <section id="vision" class="pg-hero">
+            <div class="pg-hero__inner">
+                <p class="pg-kicker">ARTISTIC PHILOSOPHY</p>
+                <h1 id="public-vision-title" class="pg-title">My Vision</h1>
+            </div>
+        </section>
 
-        <h1 id="public-vision-title">My Vision</h1>
-
-        <div class="vision-container">
-
-            <div class="vision-card">
+        <!-- المحتوى (الـ ids زي ما هي عشان main.js) -->
+        <section class="vs-section">
+            <div class="vs-card">
 
                 <p id="public-vision-description"></p>
 
-                <div class="vision-line"></div>
+                <p class="vs-sign">Moataz Medhat, Theatre Director</p>
+
+                <a class="pg-btn" href="gallery.html">See the Gallery <span aria-hidden="true">→</span></a>
 
             </div>
-
-        </div>
-
-    </section>
+        </section>
 
     </main>
+
+    <footer class="pg-footer">
+        <p>© 2026. All Rights Reserved.</p>
+    </footer>
 
     <script type="module" src="js/main.js"></script>
 
 </body>
+
 </html>

@@ -4,43 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Moataz Medhat | Theatre Director</title>
+    <title>Moataz Medhat | Actor & Director</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
+   
+    <link rel="stylesheet" href="css/home.css">
 </head>
 
-<body>
+<body class="home-page">
 
     <header>
-   <nav>
-    <div class="logo">MOATAZ MEDHAT</div>
+        <nav>
+            <div class="logo">MOATAZ MEDHAT</div>
 
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="productions.html">Productions</a></li>
-        <li><a href="vision.html">Vision</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="awards.html">Awards</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="productions.html">Productions</a></li>
+                <li><a href="vision.html">Vision</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="awards.html">Awards</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-<!-- HOME SECTION -->
-<section id="home" class="home-section">
 
-    <h1 id="public-profile-name">MOATAZ MEDHAT</h1>
+        <!-- HERO -->
+        <section id="home" class="hm-hero">
+            <div class="hm-hero__text">
+                <p class="hm-hero__kicker">Stage · Vision · Emotion</p>
 
-    <h2 id="public-profile-role">THEATRE DIRECTOR</h2>
 
-    <p>Where Art Meets The Stage</p>
+                <h1 id="public-profile-name">MOATAZ MEDHAT</h1>
+                <h2 id="public-profile-role">THEATRE DIRECTOR</h2>
 
-</section>
+                <p class="hm-hero__tagline">Because the stage is where life speaks...</p>
+
+                <a class="hm-btn" href="productions.html">Explore My Work <span aria-hidden="true">→</span></a>
+            </div>
+
+        
+            <div class="hm-portrait" id="hm-portrait">
+                <div class="hm-portrait__stage">
+                    <div class="hm-portrait__glow"></div>
+                    <div class="hm-portrait__floor"></div>
+                </div>
+            </div>
+
+            <a class="hm-scroll" href="#about">Scroll down</a>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="hm-about">
+            <div class="hm-about__image" role="img" aria-label="Director's chair under a stage light"></div>
+
+            <div class="hm-about__body">
+                <p class="hm-label">About Me</p>
+                <h3>A Theatre Director<br>with a Passion for Stories</h3>
+                <p>I believe in the power of theatre to inspire, question, and transform. Through the stage, I seek to explore the human condition and bring new perspectives on life, society, and existence.</p>
+                <a class="hm-btn" href="about.html">Learn More <span aria-hidden="true">→</span></a>
+            </div>
+
+            <ul class="hm-about__skills">
+                <li>Creative Direction<br>&amp; Dramaturgy</li>
+                <li>Stage Design<br>Collaboration</li>
+                <li>Storytelling<br>with Depth</li>
+            </ul>
+        </section>
+
+        <!-- PRODUCTIONS -->
+        <section id="productions" class="hm-productions">
+            <div class="hm-productions__intro">
+                <p class="hm-label">My Productions</p>
+                <h3>A Journey<br>Through the Stage</h3>
+                <p>A selection of my most notable works, where ideas become performances.</p>
+                <a class="hm-btn" href="productions.html">View All Works <span aria-hidden="true">→</span></a>
+            </div>
+
+          
+            <div class="hm-productions__grid">
+                <a href="productions.html" class="hm-prod hm-prod--1" aria-label="Production 1"></a>
+                <a href="productions.html" class="hm-prod hm-prod--2" aria-label="Production 2"></a>
+                <a href="productions.html" class="hm-prod hm-prod--3" aria-label="Production 3"></a>
+                <a href="productions.html" class="hm-prod hm-prod--4" aria-label="Production 4"></a>
+            </div>
+        </section>
+
+        <!-- VISION -->
+        <section id="vision" class="hm-vision">
+            <blockquote>
+                Theatre is not just an art…<br>It’s a mirror to our souls.
+            </blockquote>
+
+            <div class="hm-vision__body">
+                <h3>My Directorial Vision</h3>
+                <p>To create meaningful theatre that connects people, challenges thoughts, and celebrates humanity.</p>
+                <a class="hm-link" href="vision.html">Read my vision <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+
+        <!-- AWARDS + CONTACT -->
+        <section class="hm-strip">
+            <div class="hm-strip__item">
+                <h3>Awards &amp; Recognition</h3>
+                <p>Celebrating the journey of creativity and hard work.</p>
+                <a class="hm-link" href="awards.html">View Awards <span aria-hidden="true">→</span></a>
+            </div>
+
+            <div class="hm-strip__item">
+                <h3>Get In Touch</h3>
+                <p>Let’s create something extraordinary together.</p>
+                <a class="hm-btn hm-btn--small" href="contact.html">Contact Me <span aria-hidden="true">→</span></a>
+            </div>
+
+            <div class="hm-strip__item hm-strip__social">
+           
+                <p class="hm-social">
+                    <a href="#">https://www.facebook.com/share/18ku1cQBRC/?mibextid=wwXIfr</a>
+                    <a href="#">https://www.instagram.com/moatazmedhat17?psln=OXhlbDlqbmFtbGxi</a>
+                    <a href="#">Moataz.Medhat.17.mm@gmail.com</a>
+                </p>
+                <p class="hm-motto">Theatre Lives Forever</p>
+            </div>
+        </section>
+
     </main>
 
+    <footer class="hm-footer">
+        <p>© 2026. All Rights Reserved.</p>
+    </footer>
+
     <script type="module" src="js/main.js"></script>
+    <script src="js/home.js" defer></script>
 
 </body>
 </html>

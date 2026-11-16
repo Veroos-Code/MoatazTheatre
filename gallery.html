@@ -7,10 +7,15 @@
 
     <title>Gallery | Moataz Medhat</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/inner.css">
 </head>
 
-<body>
+<body class="inner-page">
 
     <header>
         <nav>
@@ -30,23 +35,30 @@
 
     <main>
 
-        <section id="gallery" class="gallery-section">
+      
+        <section id="gallery" class="pg-hero">
+            <div class="pg-hero__inner">
+                <p class="pg-kicker">MOMENTS ON STAGE</p>
+                <h1 class="pg-title">Photo Gallery</h1>
+            </div>
+        </section>
 
-            <span class="section-subtitle">MOMENTS ON STAGE</span>
-
-            <h1>Photo Gallery</h1>
-
+        <section class="gl-section">
             <div class="gallery-container" id="public-gallery-container">
 
                 <p>Loading images...</p>
 
             </div>
-
         </section>
 
     </main>
 
+    <footer class="pg-footer">
+        <p>© 2026. All Rights Reserved.</p>
+    </footer>
+
     <script type="module" src="js/main.js"></script>
 
 </body>
+
 </html>

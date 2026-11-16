@@ -7,10 +7,15 @@
 
     <title>Productions | Moataz Medhat</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/inner.css">
 </head>
 
-<body>
+<body class="inner-page">
 
     <header>
         <nav>
@@ -30,23 +35,31 @@
 
     <main>
 
-        <section id="productions" class="productions-section">
+  
+        <section id="productions" class="pg-hero">
+            <div class="pg-hero__inner">
+                <p class="pg-kicker">ON THE STAGE</p>
+                <h1 class="pg-title">Our Productions</h1>
+            </div>
+        </section>
 
-            <span class="section-subtitle">ON THE STAGE</span>
-
-            <h1>Our Productions</h1>
-
+       
+        <section class="pd-section">
             <div class="productions-container" id="public-productions-container">
 
                 <p>Loading productions...</p>
 
             </div>
-
         </section>
 
     </main>
 
+    <footer class="pg-footer">
+        <p>© 2026. All Rights Reserved.</p>
+    </footer>
+
     <script type="module" src="js/main.js"></script>
 
 </body>
+
 </html>
