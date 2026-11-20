@@ -25,6 +25,9 @@ body {
 ================================= */
 
 header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
     width: 100%;
     background: #090909;
     border-bottom: 1px solid #6b1725;
@@ -60,16 +63,6 @@ nav ul li a {
 nav ul li a:hover {
     color: #c9a45c;
 }
-
-/* =================================
-   NEW DESIGN: HOME + INNER PAGES
-   (body.home-page / body.inner-page فقط)
-================================= */
-
-/* =========================================================
-   home.css  —  للصفحة الرئيسية بس (كله متحدد بـ body.home-page)
-   حط الملف في: css/home.css
-   ========================================================= */
 
 body.home-page {
     --bg: #0b0a0a;
@@ -188,12 +181,14 @@ body.home-page #public-profile-name {
     color: var(--cream);
     text-transform: none;
     letter-spacing: 0;
+    overflow-wrap: anywhere;
 }
 body.home-page #public-profile-role {
     font-size: clamp(2rem, 5.2vw, 4.2rem);
     line-height: 1.05;
     color: var(--red);
     margin-bottom: 20px;
+    overflow-wrap: anywhere;
 }
 body.home-page .hm-hero__tagline {
     font-family: var(--serif);
@@ -206,9 +201,41 @@ body.home-page .hm-scroll {
     position: absolute;
     left: clamp(24px, 7vw, 110px);
     bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
     color: var(--muted);
     font-size: 0.8rem;
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+body.home-page .hm-scroll i {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--gold);
+    border: 1px solid rgba(217,166,121,0.5);
+    border-radius: 50%;
+    animation: hm-bounce 1.8s ease-in-out infinite;
+}
+
+body.home-page .hm-scroll:hover,
+body.home-page .hm-scroll:focus-visible {
+    color: var(--cream);
+}
+
+@keyframes hm-bounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.home-page .hm-scroll i { animation: none; }
 }
 
 /* ---------- About ---------- */
@@ -354,9 +381,34 @@ body.home-page .hm-strip__item h3 {
 }
 body.home-page .hm-strip__item p { color: var(--muted); font-size: 0.85rem; }
 body.home-page .hm-strip__social { align-items: center; justify-content: center; }
-body.home-page .hm-social { display: flex; gap: 20px; }
-body.home-page .hm-social a { color: var(--gold); font-size: 0.85rem; text-decoration: none; }
-body.home-page .hm-social a:hover { color: var(--cream); }
+
+/* أيقونات السوشيال (دواير) */
+body.home-page .hm-social {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+}
+body.home-page .hm-social a {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    color: var(--gold);
+    background: #2a2019;
+    border: 1px solid rgba(217,166,121,0.5);
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+body.home-page .hm-social a:hover,
+body.home-page .hm-social a:focus-visible {
+    color: #2a2019;
+    background: #e6d7be;
+    transform: translateY(-3px);
+}
 body.home-page .hm-motto {
     font-family: var(--serif);
     font-style: italic;
@@ -392,18 +444,26 @@ body.home-page .hm-footer {
         border-top: 1px solid rgba(255,255,255,0.12);
     }
     body.home-page .hm-strip__social { align-items: flex-start; }
+    body.home-page .hm-social { justify-content: flex-start; }
 }
 
 @media (max-width: 560px) {
-    body.home-page .hm-hero { min-height: 80vh; padding-top: 60px; }
-    body.home-page .hm-hero__text { padding-left: 18px; }
+    body.home-page .hm-hero {
+        min-height: 80vh;
+        padding-top: 60px;
+        padding-bottom: 110px;
+        background:
+            linear-gradient(180deg, rgba(11,10,10,0.85) 0%, rgba(11,10,10,0.7) 100%),
+            var(--img-hero) center bottom / contain no-repeat,
+            radial-gradient(ellipse at 50% 55%, rgba(200,50,60,0.4) 0%, transparent 65%),
+            var(--bg);
+    }
+    body.home-page .hm-hero__text {
+        padding-left: 18px;
+        max-width: 100%;
+    }
 }
 
-/* =========================================================
-   inner.css  —  للصفحات الداخلية (About, Productions, ...)
-   حطه في: css/inner.css
-   كله متحدد بـ body.inner-page فمش بيأثر على Contact ولا الرئيسية
-   ========================================================= */
 
 body.inner-page {
     --bg: #0b0a0a;
@@ -439,7 +499,7 @@ body.inner-page .pg-hero {
     border-bottom: 1px solid rgba(255,255,255,0.06);
     overflow: hidden;
 }
-/* ستارة حمرا خفيفة على الشمال زي الرئيسية */
+
 body.inner-page .pg-hero::before {
     content: "";
     position: absolute;
@@ -494,7 +554,6 @@ body.inner-page .ab-content {
     max-width: 1100px;
 }
 
-/* الصورة بتظهر بس لما main.js يحط لها src ويشيل display:none */
 body.inner-page .ab-photo {
     width: min(380px, 100%);
     height: auto;
@@ -525,7 +584,7 @@ body.inner-page #public-profile-description {
     font-size: 1.1rem;
     line-height: 1.85;
     color: var(--cream);
-    white-space: pre-line; /* يحافظ على الأسطر لو الوصف فيه فقرات */
+    white-space: pre-line; 
     margin-bottom: 32px;
 }
 
@@ -559,7 +618,7 @@ body.inner-page .vs-card {
     padding: 8px 0 8px 36px;
     border-left: 1px solid var(--gold);
 }
-/* علامة اقتباس كبيرة */
+
 body.inner-page .vs-card::before {
     content: "\201C";
     position: absolute;
@@ -606,7 +665,7 @@ body.inner-page .gl-section {
     padding: 60px clamp(24px, 5vw, 72px) 80px;
     background: var(--bg);
 }
-/* main.js هو اللي بيملا الحاوية دي بالصور، فالستايل عام على أي عنصر جواها */
+
 body.inner-page #public-gallery-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -629,7 +688,7 @@ body.inner-page #public-gallery-container img {
 }
 body.inner-page #public-gallery-container > *:hover img { transform: scale(1.04); }
 
-/* رسالة "Loading images..." أو أي نص */
+
 body.inner-page #public-gallery-container > p {
     grid-column: 1 / -1;
     border: 0;
@@ -652,7 +711,6 @@ body.inner-page .pd-section {
     padding: 60px clamp(24px, 5vw, 72px) 80px;
     background: var(--bg);
 }
-/* main.js هو اللي بيملا الحاوية بالعروض، فالستايل عام على أي كارت جواها */
 body.inner-page #public-productions-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -699,7 +757,7 @@ body.inner-page #public-productions-container a {
 }
 body.inner-page #public-productions-container a:hover { text-decoration: underline; }
 
-/* رسالة "Loading productions..." أو أي نص مباشر */
+
 body.inner-page #public-productions-container > p {
     grid-column: 1 / -1;
     display: block;
@@ -719,7 +777,7 @@ body.inner-page .aw-section {
     padding: 60px clamp(24px, 7vw, 110px) 80px;
     background: var(--bg-soft);
 }
-/* main.js هو اللي بيملا الحاوية بالجوايز، فالستايل عام على أي عنصر جواها */
+
 body.inner-page #public-awards-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -765,7 +823,7 @@ body.inner-page #public-awards-container small {
     font-size: 0.85rem;
 }
 
-/* رسالة "Loading awards..." أو أي نص مباشر */
+
 body.inner-page #public-awards-container > p {
     grid-column: 1 / -1;
     border: 0;
@@ -776,7 +834,8 @@ body.inner-page #public-awards-container > p {
 
 @media (max-width: 700px) {
     body.inner-page .aw-section { padding: 40px 20px 60px; }
-    body.inner-page #public-awards-container { grid-template-columns: 1fr; }
+    /* minmax(0, 1fr) بدل 1fr عشان الكروت متكبرش بره الشاشة */
+    body.inner-page #public-awards-container { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* =================================
@@ -823,7 +882,7 @@ body.inner-page #public-awards-container > p {
 }
 
 .award-card p {
-    color: #eee5dc;
+    color: #ddbb98;
     line-height: 1.7;
 }
 
@@ -857,24 +916,24 @@ body.inner-page #public-awards-container > p {
 
 .contact-info:hover,
 #contact-form:hover {
-    border-color: #c9a45c;
+    border-color: #ebb54a;
 }
 
 .contact-info h2 {
     font-family: 'Cinzel', serif;
-    color: #d5b16b;
+    color: #c9a252;
     margin-bottom: 25px;
 }
 
 .contact-info p {
-    color: #eee5dc;
+    color: #eac6a1;
     font-size: 16px;
     line-height: 1.8;
     margin-bottom: 20px;
 }
 
 .contact-info a:not(.social-links a) {
-    color: #c9a45c;
+    color: #352a13;
 }
 
 .social-links {
@@ -985,15 +1044,23 @@ button:disabled {
 
     /* Navigation */
 
+    header {
+        padding: 12px 5%;
+    }
+
     nav {
         flex-direction: column;
-        gap: 25px;
+        gap: 10px;
     }
 
     nav ul {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
+        gap: 6px 14px;
+    }
+
+    nav ul li a {
+        font-size: 13px;
     }
 
     .logo {
@@ -1183,13 +1250,25 @@ button:disabled {
     same size as the gallery cards)
 ================================= */
 
+.contact-info-grid {
+    --card-bg: #b99660;        
+    --card-border: #a8864f;
+    --card-text: #1f1710;     
+    --icon-bg: #2a2019;
+    --icon-fg: #e3c88f;
+    --hover-bg: #5e1a27;      
+    --hover-border: #b99660;
+    --hover-text: #f5ecdc;     
+    --hover-icon-bg: #e6d7be;
+    --hover-icon-fg: #b36f3f;
+}
+
 .contact-container {
     grid-template-columns: 1fr;
     max-width: 1200px;
     gap: 40px;
 }
 
-/* The golden cards are the boxes now, so the wrapper stays clear. */
 .contact-info {
     background: transparent;
     border: 0;
@@ -1218,19 +1297,24 @@ button:disabled {
     justify-content: center;
     text-align: center;
     text-decoration: none;
-    color: #090909;
-    background: #d5b16b;
-    border: 1px solid #d5b16b;
+    color: var(--card-text);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 7px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
     transition: background 0.3s ease, color 0.3s ease,
-                transform 0.3s ease, border-color 0.3s ease;
+                transform 0.3s ease, border-color 0.3s ease,
+                box-shadow 0.3s ease;
 }
 
-.contact-info .contact-info-card:hover {
-    color: #fff;
-    background: #6b1725;
-    border-color: #c9a45c;
-    transform: translateY(-8px);
+.contact-info .contact-info-card:hover,
+.contact-info .contact-info-card:focus-visible {
+    color: var(--hover-text);
+    background: var(--hover-bg);
+    border-color: var(--hover-border);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+    outline: none;
 }
 
 .contact-info .contact-icon {
@@ -1243,15 +1327,20 @@ button:disabled {
     font-size: 38px;
     font-weight: 700;
     line-height: 1;
-    color: #d5b16b;
-    background: #090909;
+    color: var(--icon-fg);
+    background: var(--icon-bg);
     border-radius: 50%;
     transition: color 0.3s ease, background 0.3s ease;
 }
 
-.contact-info .contact-info-card:hover .contact-icon {
-    color: #090909;
-    background: #d5b16b;
+.contact-info .contact-icon i {
+    line-height: 1;
+}
+
+.contact-info .contact-info-card:hover .contact-icon,
+.contact-info .contact-info-card:focus-visible .contact-icon {
+    color: var(--hover-icon-fg);
+    background: var(--hover-icon-bg);
 }
 
 .contact-info .contact-info-card h3 {
@@ -1272,7 +1361,6 @@ button:disabled {
     overflow-wrap: anywhere;
 }
 
-/* Form lines up with the two card columns above it. */
 #contact-form {
     width: 100%;
     max-width: 791px;
@@ -1290,9 +1378,10 @@ button:disabled {
     }
 }
 
-@media (max-width: 480px) {
+/* عمود واحد من 600px عشان النصوص الطويلة (زي الإيميل) متتكسرش */
+@media (max-width: 600px) {
     .contact-info-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .contact-info .contact-info-card {
@@ -1300,6 +1389,11 @@ button:disabled {
     }
 }
 
+@media (max-width: 480px) {
+    .contact-info .contact-info-card {
+        min-height: 260px;
+    }
+}
 /* =================================
    HOME PAGE - CONTACT SECTION
 ================================= */
@@ -1544,6 +1638,14 @@ button:disabled {
     .awards-container > .award-card,
     .vision-container > .vision-card {
         min-height: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .productions-container > .production-card,
+    .awards-container > .award-card,
+    .vision-container > .vision-card {
+        min-height: 260px;
     }
 }
 
