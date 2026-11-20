@@ -75,6 +75,8 @@ body.home-page {
     --serif: "Playfair Display", Georgia, "Times New Roman", serif;
     --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
+    /* ---------- الصور: غيّر المسارات دي بصورك ----------
+       لو الصورة مش موجودة هيظهر تدرج غامق بداله */
     --img-hero: url("../assets/images/moataz.png");
     --img-about: url("../assets/images/Director-Chair.png");
     --img-prod-1: url("../assets/images/prod1.jpeg");
@@ -151,6 +153,7 @@ body.home-page .hm-hero {
         var(--bg);
     overflow: hidden;
 }
+/* ستارة حمرا على الشمال */
 body.home-page .hm-hero::before {
     content: "";
     position: absolute;
@@ -379,6 +382,7 @@ body.home-page .hm-strip__item h3 {
 body.home-page .hm-strip__item p { color: var(--muted); font-size: 0.85rem; }
 body.home-page .hm-strip__social { align-items: center; justify-content: center; }
 
+/* أيقونات السوشيال (دواير) */
 body.home-page .hm-social {
     display: flex;
     flex-wrap: wrap;
@@ -459,6 +463,7 @@ body.home-page .hm-footer {
         max-width: 100%;
     }
 }
+
 
 body.inner-page {
     --bg: #0b0a0a;
@@ -683,6 +688,7 @@ body.inner-page #public-gallery-container img {
 }
 body.inner-page #public-gallery-container > *:hover img { transform: scale(1.04); }
 
+
 body.inner-page #public-gallery-container > p {
     grid-column: 1 / -1;
     border: 0;
@@ -751,6 +757,7 @@ body.inner-page #public-productions-container a {
 }
 body.inner-page #public-productions-container a:hover { text-decoration: underline; }
 
+
 body.inner-page #public-productions-container > p {
     grid-column: 1 / -1;
     display: block;
@@ -816,6 +823,7 @@ body.inner-page #public-awards-container small {
     font-size: 0.85rem;
 }
 
+
 body.inner-page #public-awards-container > p {
     grid-column: 1 / -1;
     border: 0;
@@ -826,6 +834,7 @@ body.inner-page #public-awards-container > p {
 
 @media (max-width: 700px) {
     body.inner-page .aw-section { padding: 40px 20px 60px; }
+    /* minmax(0, 1fr) بدل 1fr عشان الكروت متكبرش بره الشاشة */
     body.inner-page #public-awards-container { grid-template-columns: minmax(0, 1fr); }
 }
 
@@ -1126,6 +1135,7 @@ button:disabled {
         padding: 25px;
     }
 
+
 }
 
 @media (max-width: 480px) {
@@ -1368,6 +1378,7 @@ button:disabled {
     }
 }
 
+/* عمود واحد من 600px عشان النصوص الطويلة (زي الإيميل) متتكسرش */
 @media (max-width: 600px) {
     .contact-info-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -1700,6 +1711,7 @@ button:disabled {
 
 /* =================================
    DASHBOARD  (body.dashboard-page)
+
 ================================= */
 
 body.dashboard-page {
@@ -1805,23 +1817,18 @@ body.dashboard-page .dashboard-back:hover { text-decoration: underline; }
 
 /* ---------- Main ---------- */
 body.dashboard-page .dashboard-main {
+    
     flex: 1;
     min-width: 0;
-    padding: 150px clamp(20px, 4vw, 56px) 60px;
+    padding: 40px clamp(20px, 4vw, 56px) 60px;
 }
 body.dashboard-page .dashboard-header {
-    position: fixed;
-    top: 0;
-    left: 270px;
-    right: 0;
-    z-index: 50;
-    height: 130px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    padding: 0 clamp(20px, 4vw, 56px);
-    background: var(--bg);
+    padding-bottom: 24px;
+    margin-bottom: 8px;
     border-bottom: 1px solid var(--line);
 }
 body.dashboard-page .dashboard-header span {
@@ -1943,7 +1950,7 @@ body.dashboard-page input[type="file"]::file-selector-button {
 }
 body.dashboard-page input[type="file"]::file-selector-button:hover { background: var(--red); }
 
-/* ---------- Buttons ---------- */
+
 body.dashboard-page .add-award-btn,
 body.dashboard-page form button[type="submit"] {
     width: fit-content;
@@ -2004,7 +2011,6 @@ body.dashboard-page [class*="delete"]:hover {
     transform: none;
 }
 
-/* ---------- Lists ---------- */
 body.dashboard-page #awards-list,
 body.dashboard-page #productions-list,
 body.dashboard-page #gallery-list,
@@ -2074,21 +2080,12 @@ body.dashboard-page #messages-list p {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-    body.dashboard-page .dashboard { flex-direction: column; padding-top: 76px; }
-
-    /* الهيدر ثابت فوق */
-    body.dashboard-page .dashboard-header {
-        left: 0;
-        height: 76px;
-        padding: 0 16px;
-        overflow: hidden;
-    }
-    body.dashboard-page .dashboard-header span { display: none; }
-    body.dashboard-page .dashboard-header h1 { margin: 0; font-size: 1.25rem; }
-    body.dashboard-page .dashboard-header p { margin-top: 2px; font-size: 0.8rem; }
-
+    body.dashboard-page .dashboard { flex-direction: column; }
+    
     body.dashboard-page .dashboard-sidebar {
-        position: static;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
         width: 100%;
         height: auto;
         padding: 20px;
@@ -2102,18 +2099,14 @@ body.dashboard-page #messages-list p {
     body.dashboard-page .dashboard-nav a.active { border-bottom-color: var(--red); }
     body.dashboard-page .dashboard-back { margin-top: 14px; padding: 8px 0; }
     body.dashboard-page .admin-label { display: none; }
-
-    body.dashboard-page .dashboard-main { padding-top: 24px; }
 }
 @media (max-width: 600px) {
-    body.dashboard-page .dashboard-main { padding: 24px 16px 48px; }
+    body.dashboard-page .dashboard-main { padding: 28px 16px 48px; }
     body.dashboard-page .dashboard-welcome { padding: 22px 18px; }
     body.dashboard-page .dashboard-cards { grid-template-columns: 1fr; }
 }
 
-/* =================================
-   ADMIN LOGIN  (body.login-page)
-================================= */
+
 
 body.login-page {
     --bg: #0b0a0a;
@@ -2227,6 +2220,7 @@ body.login-page .input-group input {
 body.login-page .input-group input::placeholder { color: #7d746c; }
 body.login-page .input-group input:focus { border-color: var(--gold); }
 
+
 body.login-page .login-box button {
     width: 100%;
     margin-top: 6px;
@@ -2280,4 +2274,15 @@ body.login-page button:focus-visible { outline: 2px solid var(--gold); outline-o
 @media (max-width: 480px) {
     body.login-page .login-box { padding: 36px 22px 28px; }
     body.login-page .login-box h1 { font-size: 1.4rem; }
+}
+/* Keep dashboard content scrolling normally */
+body.dashboard-page .dashboard-main,
+body.dashboard-page .dashboard-content,
+body.dashboard-page #messages {
+    position: static !important;
+    overflow: visible;
+}
+
+body.dashboard-page .dashboard-header {
+    position: static !important;
 }
