@@ -1730,10 +1730,9 @@ body.dashboard-page button:focus-visible { outline: 2px solid var(--gold); outli
 
 /* ---------- Sidebar ---------- */
 body.dashboard-page .dashboard-sidebar {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    z-index: 60;
+    align-self: flex-start;
     width: 270px;
     height: 100vh;
     overflow-y: auto;
@@ -1808,16 +1807,21 @@ body.dashboard-page .dashboard-back:hover { text-decoration: underline; }
 body.dashboard-page .dashboard-main {
     flex: 1;
     min-width: 0;
-    margin-left: 270px;
-    padding: 40px clamp(20px, 4vw, 56px) 60px;
+    padding: 150px clamp(20px, 4vw, 56px) 60px;
 }
 body.dashboard-page .dashboard-header {
+    position: fixed;
+    top: 0;
+    left: 270px;
+    right: 0;
+    z-index: 50;
+    height: 130px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    padding-bottom: 24px;
-    margin-bottom: 8px;
+    padding: 0 clamp(20px, 4vw, 56px);
+    background: var(--bg);
     border-bottom: 1px solid var(--line);
 }
 body.dashboard-page .dashboard-header span {
@@ -2070,68 +2074,39 @@ body.dashboard-page #messages-list p {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-    body.dashboard-page .dashboard { flex-direction: column; }
+    body.dashboard-page .dashboard { flex-direction: column; padding-top: 76px; }
 
-    body.dashboard-page .dashboard { padding-top: 56px; }
-    body.dashboard-page .dashboard-main { margin-left: 0; padding-top: 24px; }
+    /* الهيدر ثابت فوق */
+    body.dashboard-page .dashboard-header {
+        left: 0;
+        height: 76px;
+        padding: 0 16px;
+        overflow: hidden;
+    }
+    body.dashboard-page .dashboard-header span { display: none; }
+    body.dashboard-page .dashboard-header h1 { margin: 0; font-size: 1.25rem; }
+    body.dashboard-page .dashboard-header p { margin-top: 2px; font-size: 0.8rem; }
 
     body.dashboard-page .dashboard-sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 60;
+        position: static;
         width: 100%;
-        height: 56px;
-        padding: 0 16px;
-        flex-direction: row;
-        align-items: center;
-        gap: 14px;
-        overflow: hidden;
+        height: auto;
+        padding: 20px;
         border-right: 0;
         border-bottom: 1px solid rgba(200,50,60,0.35);
     }
-    body.dashboard-page .dashboard-logo {
-        flex-direction: row;
-        flex-shrink: 0;
-        margin: 0;
-        font-size: 1.2rem;
-    }
-    body.dashboard-page .dashboard-logo::before,
-    body.dashboard-page .dashboard-logo span { display: none; }
+    body.dashboard-page .dashboard-logo { margin-bottom: 18px; }
     body.dashboard-page .dashboard-sidebar h3 { display: none; }
-
-    body.dashboard-page .dashboard-nav {
-        flex: 1;
-        min-width: 0;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        gap: 6px;
-        overflow-x: auto;
-        scrollbar-width: none;
-    }
-    body.dashboard-page .dashboard-nav::-webkit-scrollbar { display: none; }
-    body.dashboard-page .dashboard-nav a {
-        padding: 8px 12px;
-        white-space: nowrap;
-        border-left: 0;
-        border-bottom: 2px solid transparent;
-    }
+    body.dashboard-page .dashboard-nav { flex-direction: row; flex-wrap: wrap; gap: 6px; }
+    body.dashboard-page .dashboard-nav a { padding: 8px 12px; border-left: 0; border-bottom: 2px solid transparent; }
     body.dashboard-page .dashboard-nav a.active { border-bottom-color: var(--red); }
-
-    body.dashboard-page .dashboard-back { display: none; }
-    body.dashboard-page .logout-btn {
-        width: auto;
-        flex-shrink: 0;
-        margin: 0;
-        padding: 8px 14px !important;
-        white-space: nowrap;
-    }
+    body.dashboard-page .dashboard-back { margin-top: 14px; padding: 8px 0; }
     body.dashboard-page .admin-label { display: none; }
+
+    body.dashboard-page .dashboard-main { padding-top: 24px; }
 }
 @media (max-width: 600px) {
     body.dashboard-page .dashboard-main { padding: 24px 16px 48px; }
-    body.dashboard-page .dashboard-logo { display: none; }
     body.dashboard-page .dashboard-welcome { padding: 22px 18px; }
     body.dashboard-page .dashboard-cards { grid-template-columns: 1fr; }
 }
