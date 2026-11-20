@@ -75,8 +75,6 @@ body.home-page {
     --serif: "Playfair Display", Georgia, "Times New Roman", serif;
     --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
-    /* ---------- الصور: غيّر المسارات دي بصورك ----------
-       لو الصورة مش موجودة هيظهر تدرج غامق بداله */
     --img-hero: url("../assets/images/moataz.png");
     --img-about: url("../assets/images/Director-Chair.png");
     --img-prod-1: url("../assets/images/prod1.jpeg");
@@ -153,7 +151,6 @@ body.home-page .hm-hero {
         var(--bg);
     overflow: hidden;
 }
-/* ستارة حمرا على الشمال */
 body.home-page .hm-hero::before {
     content: "";
     position: absolute;
@@ -382,7 +379,6 @@ body.home-page .hm-strip__item h3 {
 body.home-page .hm-strip__item p { color: var(--muted); font-size: 0.85rem; }
 body.home-page .hm-strip__social { align-items: center; justify-content: center; }
 
-/* أيقونات السوشيال (دواير) */
 body.home-page .hm-social {
     display: flex;
     flex-wrap: wrap;
@@ -463,7 +459,6 @@ body.home-page .hm-footer {
         max-width: 100%;
     }
 }
-
 
 body.inner-page {
     --bg: #0b0a0a;
@@ -688,7 +683,6 @@ body.inner-page #public-gallery-container img {
 }
 body.inner-page #public-gallery-container > *:hover img { transform: scale(1.04); }
 
-
 body.inner-page #public-gallery-container > p {
     grid-column: 1 / -1;
     border: 0;
@@ -757,7 +751,6 @@ body.inner-page #public-productions-container a {
 }
 body.inner-page #public-productions-container a:hover { text-decoration: underline; }
 
-
 body.inner-page #public-productions-container > p {
     grid-column: 1 / -1;
     display: block;
@@ -823,7 +816,6 @@ body.inner-page #public-awards-container small {
     font-size: 0.85rem;
 }
 
-
 body.inner-page #public-awards-container > p {
     grid-column: 1 / -1;
     border: 0;
@@ -834,7 +826,6 @@ body.inner-page #public-awards-container > p {
 
 @media (max-width: 700px) {
     body.inner-page .aw-section { padding: 40px 20px 60px; }
-    /* minmax(0, 1fr) بدل 1fr عشان الكروت متكبرش بره الشاشة */
     body.inner-page #public-awards-container { grid-template-columns: minmax(0, 1fr); }
 }
 
@@ -1135,7 +1126,6 @@ button:disabled {
         padding: 25px;
     }
 
-
 }
 
 @media (max-width: 480px) {
@@ -1378,7 +1368,6 @@ button:disabled {
     }
 }
 
-/* عمود واحد من 600px عشان النصوص الطويلة (زي الإيميل) متتكسرش */
 @media (max-width: 600px) {
     .contact-info-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -1711,7 +1700,6 @@ button:disabled {
 
 /* =================================
    DASHBOARD  (body.dashboard-page)
-   لازم <body class="dashboard-page"> في dashboard.html
 ================================= */
 
 body.dashboard-page {
@@ -1819,15 +1807,19 @@ body.dashboard-page .dashboard-back:hover { text-decoration: underline; }
 body.dashboard-page .dashboard-main {
     flex: 1;
     min-width: 0;
-    padding: 40px clamp(20px, 4vw, 56px) 60px;
+    padding: 0 clamp(20px, 4vw, 56px) 60px;
 }
 body.dashboard-page .dashboard-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    padding-bottom: 24px;
+    padding: 40px 0 24px;
     margin-bottom: 8px;
+    background: var(--bg);
     border-bottom: 1px solid var(--line);
 }
 body.dashboard-page .dashboard-header span {
@@ -1928,7 +1920,6 @@ body.dashboard-page input[type="number"]:focus,
 body.dashboard-page input[type="email"]:focus,
 body.dashboard-page textarea:focus { border-color: var(--gold); }
 
-/* اختيار الصورة */
 body.dashboard-page input[type="file"] {
     width: 100%;
     padding: 8px;
@@ -1950,7 +1941,7 @@ body.dashboard-page input[type="file"]::file-selector-button {
 }
 body.dashboard-page input[type="file"]::file-selector-button:hover { background: var(--red); }
 
-/* ---------- Buttons (بتكسب على الـ !important العام بالـ specificity) ---------- */
+/* ---------- Buttons ---------- */
 body.dashboard-page .add-award-btn,
 body.dashboard-page form button[type="submit"] {
     width: fit-content;
@@ -2011,7 +2002,7 @@ body.dashboard-page [class*="delete"]:hover {
     transform: none;
 }
 
-/* ---------- Lists (dashboard.js بيملاهم، فالستايل عام على أي عنصر جواهم) ---------- */
+/* ---------- Lists ---------- */
 body.dashboard-page #awards-list,
 body.dashboard-page #productions-list,
 body.dashboard-page #gallery-list,
@@ -2038,7 +2029,6 @@ body.dashboard-page #productions-list > *:hover,
 body.dashboard-page #gallery-list > *:hover,
 body.dashboard-page #messages-list > *:hover { border-color: rgba(217,166,121,0.5); }
 
-/* رسالة "No ... yet" أو "Loading..." */
 body.dashboard-page #awards-list > p,
 body.dashboard-page #productions-list > p,
 body.dashboard-page #gallery-list > p,
@@ -2085,30 +2075,71 @@ body.dashboard-page #messages-list p {
     body.dashboard-page .dashboard { flex-direction: column; }
 
     body.dashboard-page .dashboard-sidebar {
-        position: static;
+        position: sticky;
+        top: 0;
+        z-index: 60;
         width: 100%;
-        height: auto;
-        padding: 20px;
+        height: 56px;
+        padding: 0 16px;
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+        overflow: hidden;
         border-right: 0;
         border-bottom: 1px solid rgba(200,50,60,0.35);
     }
-    body.dashboard-page .dashboard-logo { margin-bottom: 18px; }
+    body.dashboard-page .dashboard-logo {
+        flex-direction: row;
+        flex-shrink: 0;
+        margin: 0;
+        font-size: 1.2rem;
+    }
+    body.dashboard-page .dashboard-logo::before,
+    body.dashboard-page .dashboard-logo span { display: none; }
     body.dashboard-page .dashboard-sidebar h3 { display: none; }
-    body.dashboard-page .dashboard-nav { flex-direction: row; flex-wrap: wrap; gap: 6px; }
-    body.dashboard-page .dashboard-nav a { padding: 8px 12px; border-left: 0; border-bottom: 2px solid transparent; }
+
+    body.dashboard-page .dashboard-nav {
+        flex: 1;
+        min-width: 0;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 6px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    body.dashboard-page .dashboard-nav::-webkit-scrollbar { display: none; }
+    body.dashboard-page .dashboard-nav a {
+        padding: 8px 12px;
+        white-space: nowrap;
+        border-left: 0;
+        border-bottom: 2px solid transparent;
+    }
     body.dashboard-page .dashboard-nav a.active { border-bottom-color: var(--red); }
-    body.dashboard-page .dashboard-back { margin-top: 14px; padding: 8px 0; }
+
+    body.dashboard-page .dashboard-back { display: none; }
+    body.dashboard-page .logout-btn {
+        width: auto;
+        flex-shrink: 0;
+        margin: 0;
+        padding: 8px 14px !important;
+        white-space: nowrap;
+    }
     body.dashboard-page .admin-label { display: none; }
+
+    body.dashboard-page .dashboard-header { top: 56px; }
 }
 @media (max-width: 600px) {
-    body.dashboard-page .dashboard-main { padding: 28px 16px 48px; }
+    body.dashboard-page .dashboard-main { padding: 0 16px 48px; }
+    body.dashboard-page .dashboard-header { padding: 14px 0 12px; }
+    body.dashboard-page .dashboard-header p { display: none; }
+    body.dashboard-page .dashboard-header h1 { font-size: 1.3rem; margin-top: 4px; }
+    body.dashboard-page .dashboard-logo { display: none; }
     body.dashboard-page .dashboard-welcome { padding: 22px 18px; }
     body.dashboard-page .dashboard-cards { grid-template-columns: 1fr; }
 }
 
 /* =================================
    ADMIN LOGIN  (body.login-page)
-   لازم <body class="login-page"> في صفحة اللوجين
 ================================= */
 
 body.login-page {
@@ -2138,7 +2169,6 @@ body.login-page .login-section {
     overflow: hidden;
 }
 
-/* الخلفية: ستارة حمرا على الشمال + ضوء مسرح من فوق + كراسي المسرح غامقة */
 body.login-page .login-background {
     position: absolute;
     inset: 0;
@@ -2224,7 +2254,6 @@ body.login-page .input-group input {
 body.login-page .input-group input::placeholder { color: #7d746c; }
 body.login-page .input-group input:focus { border-color: var(--gold); }
 
-/* الزرار: بنكسب على الـ !important العام بالـ specificity */
 body.login-page .login-box button {
     width: 100%;
     margin-top: 6px;
