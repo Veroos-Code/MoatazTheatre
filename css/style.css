@@ -1730,9 +1730,10 @@ body.dashboard-page button:focus-visible { outline: 2px solid var(--gold); outli
 
 /* ---------- Sidebar ---------- */
 body.dashboard-page .dashboard-sidebar {
-    position: sticky;
+    position: fixed;
     top: 0;
-    align-self: flex-start;
+    left: 0;
+    z-index: 60;
     width: 270px;
     height: 100vh;
     overflow-y: auto;
@@ -1807,18 +1808,21 @@ body.dashboard-page .dashboard-back:hover { text-decoration: underline; }
 body.dashboard-page .dashboard-main {
     flex: 1;
     min-width: 0;
-    padding: 0 clamp(20px, 4vw, 56px) 60px;
+    margin-left: 270px;
+    padding: 150px clamp(20px, 4vw, 56px) 60px;
 }
 body.dashboard-page .dashboard-header {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 270px;
+    right: 0;
     z-index: 50;
+    height: 130px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
-    padding: 40px 0 24px;
-    margin-bottom: 8px;
+    padding: 0 clamp(20px, 4vw, 56px);
     background: var(--bg);
     border-bottom: 1px solid var(--line);
 }
@@ -2075,6 +2079,7 @@ body.dashboard-page #messages-list p {
     body.dashboard-page .dashboard { flex-direction: column; }
 
     body.dashboard-page .dashboard { padding-top: 120px; }
+    body.dashboard-page .dashboard-main { margin-left: 0; padding-top: 0; }
 
     body.dashboard-page .dashboard-sidebar {
         position: fixed;
